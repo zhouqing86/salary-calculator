@@ -1,6 +1,9 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const PROVINCE_CONFIG = {
+  
+}
 
 Page({
   data: {
