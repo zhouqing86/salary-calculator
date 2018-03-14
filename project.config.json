@@ -1,5 +1,5 @@
 {
-	"description": "项目配置文件。",
+	"description": "工资计算器",
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
@@ -8,10 +8,9 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.91",
+	"libVersion": "1.6.6",
 	"appid": "wx4ca280c939fd121f",
 	"projectname": "salary-calculator",
-	"isGameTourist": false,
 	"condition": {
 		"search": {
 			"current": -1,
@@ -19,10 +18,6 @@
 		},
 		"conversation": {
 			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {

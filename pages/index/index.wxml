@@ -1,13 +1,53 @@
-<!--index.wxml-->
+<import src="../../common/head.wxml" />
+<import src="../../common/foot.wxml" />
+
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <template is="head" data="{{title: '工资计算器'}}"/>
+
+  <view class="page-body">
+    <form catchsubmit="formSubmit" catchreset="formReset">
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input class="weui-input" name="city" value="{{city}}" placeholder="选择城市"/>
+          </view>
+        </view>
+        <view class="primary-cities">
+          <block wx:for="{{cities}}" wx:key="{{index}}" wx:for-item="item">  
+            <button class="city-link">{{item.name}}</button>
+          </block>
+        </view>
+      </view>
+
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input class="weui-input" name="salary" value="{{salary}}" placeholder="月工资"/>
+          </view>
+        </view>
+      </view>
+
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input class="weui-input" name="insuranceBase" value="{{config.insuranceBase}}" placeholder="最高保险基数"/>
+          </view>
+        </view>
+      </view>
+
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input class="weui-input" name="housingFundBase" value="{{config.housingFundBase}}" placeholder="最高住房公积金基数"/>
+          </view>
+        </view>
+      </view>
+
+      <view class="btn-area" id="buttonContainer">
+        <button type="primary" formType="submit">计算</button>
+        <button formType="reset">重置</button>
+      </view>
+    </form>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+  <template is="foot" />
 </view>
