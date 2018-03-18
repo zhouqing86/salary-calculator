@@ -9,12 +9,12 @@
       <view class="page-section">
         <view class="weui-cells weui-cells_after-title">
           <view class="weui-cell weui-cell_input">
-            <input class="weui-input" name="city" value="{{city}}" placeholder="选择城市"/>
+            <input class="weui-input" name="city" value="{{config.wholeName}}" placeholder="选择城市"/>
           </view>
         </view>
         <view class="primary-cities">
           <block wx:for="{{cities}}" wx:key="{{index}}" wx:for-item="item">  
-            <button class="city-link">{{item.name}}</button>
+            <button class="city-link" data-city-id="{{item.id}}" bindtap="changeCity">{{item.name}}</button>
           </block>
         </view>
       </view>
@@ -30,7 +30,9 @@
       <view class="page-section">
         <view class="weui-cells weui-cells_after-title">
           <view class="weui-cell weui-cell_input">
-            <input class="weui-input" name="insuranceBase" value="{{config.insuranceBase}}" placeholder="最高保险基数"/>
+            <input class="weui-input" name="housingFundBase" value="{{config.minHBase}}" placeholder="公积金缴纳基数"/>
+            <input class="weui-input" name="housingFundBase" value="{{config.pHBase}}" placeholder="公积金比例"/>
+            公积金基数与比例
           </view>
         </view>
       </view>
@@ -38,7 +40,9 @@
       <view class="page-section">
         <view class="weui-cells weui-cells_after-title">
           <view class="weui-cell weui-cell_input">
-            <input class="weui-input" name="housingFundBase" value="{{config.housingFundBase}}" placeholder="最高住房公积金基数"/>
+            <input class="weui-input" name="insuranceBase" value="{{config.minIBase}}" placeholder="保险基数"/>
+            <input class="weui-input" name="housingFundBase" value="{{config.pHBase}}" placeholder="保险比例"/>
+            保险基数与比例
           </view>
         </view>
       </view>
