@@ -40,3 +40,15 @@ form{
   margin-left: 20rpx;
   position: relative;
 }
+
+.tips {
+  font-size: 10px;
+  color: #3cc51f;
+}
+
+.second-input {
+  border-left: 1px solid #E5E5E5;
+  border-right: 1px solid #E5E5E5;
+  padding-left: 10px;
+  margin-right: 10px;
+}

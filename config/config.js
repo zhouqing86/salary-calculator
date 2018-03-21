@@ -12,10 +12,10 @@ const CAPITAL_CITIES    =   [
         name:"上海",
         wholeName: "上海市",
         id: 9,
-        maxIBase: 22440,
-        maxHBase: 22440,
-        minIBase: 2150,
-        minHBase: 2050,
+        maxIBase: 19512,
+        maxHBase: 19512,
+        minIBase: 3902,
+        minHBase: 2184,
     },
     {
         name:"深圳",
@@ -302,7 +302,7 @@ const defaultCitiesConfig = function() {
         maxIBase: DEFAULT_MAX_IBASE,
         minIBase: DEFAULT_MIN_IBASE,
         maxHBase: DEFAULT_MAX_HBASE,
-        minHBase: DEFAULT_MIN_HBASE,      
+        minHBase: DEFAULT_MIN_HBASE,
     });
 }
 
@@ -315,5 +315,3 @@ module.exports = {
     CITIES_CONFIG: defaultCitiesConfig(),
     getConfigById: getConfigById,
 }
-  
-

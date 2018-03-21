@@ -6,8 +6,10 @@ const config = require('../../config/config');
 
 const CAPITAL_CITIES=config.CITIES_CONFIG;
 const defaultConfig = CAPITAL_CITIES.length > 0 ? utils.clone(CAPITAL_CITIES[0]) : {};
-defaultConfig.hBase = defaultConfig.minHBase;
-defaultConfig.iBase = defaultConfig.minIBase;
+const hBase = defaultConfig.minHBase;
+const iBase = defaultConfig.minIBase;
+const pHBase = defaultConfig.pHBase;
+const pIBase = defaultConfig.pIBase;
 
 Page({
   data: {
@@ -17,7 +19,11 @@ Page({
     code: '',
     city: '北京市',
     cities: CAPITAL_CITIES,
-    config: defaultConfig
+    config: defaultConfig,
+    hBase: hBase,
+    iBase: iBase,
+    pHBase: pHBase,
+    pIBase: pIBase
   },
   //事件处理函数
   bindViewTap: function() {
@@ -76,6 +82,35 @@ Page({
       cityConfig = cityConfig ? cityConfig : defaultConfig;
     }
     this.setData({config: cityConfig});
+    if(this.data.salary) {
+      this.changeStateBySalary(this.data.salary, cityConfig);
+    } else {
+      this.changeStateBySalary(0, cityConfig);
+    }
+  },
+  changeSalary: function(event) {
+    const salary = event.detail.value;
+    if(salary) {
+      this.setData({salary: salary})
+      this.changeStateBySalary(salary, this.data.config);
+    }
+
+  },
+  changeStateBySalary: function(salary, config) {
+    if (salary < config.minHBase) {
+      this.setData({hBase: config.minHBase})
+    } else if (salary > config.maxHBase) {
+      this.setData({hBase: config.maxHBase})
+    } else {
+      this.setData({hBase: salary})
+    }
+    if (salary < config.minIBase) {
+      this.setData({iBase: config.minIBase})
+    } else if(salary > config.maxIBase) {
+      this.setData({iBase: config.maxIBase})
+    } else {
+      this.setData({iBase: salary})
+    }
   },
   formSubmit: function (e) {
     const formData = e.detail.value;
@@ -87,6 +122,8 @@ Page({
     });
   },
   formReset: function (e) {
-    
+    this.setData({
+      config: defaultConfig
+    })
   }
 })
