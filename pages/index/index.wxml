@@ -2,7 +2,7 @@
 <import src="../../common/foot.wxml" />
 
 <view class="container">
-  <template is="head" data="{{title: '工资计算器'}}"/>
+  <template is="head" data="{{title: '税后工资计算器'}}"/>
 
   <view class="page-body">
     <form catchsubmit="formSubmit" catchreset="formReset">
@@ -20,9 +20,9 @@
       </view>
 
       <view class="page-section">
-        <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cells weui-cells_after-title {{salaryErrorClass}}">
           <view class="weui-cell weui-cell_input">
-            <input class="weui-input" type="number" name="salary" onchange="changeSalary" value="{{salary}}" placeholder="月工资"/>
+            <input class="weui-input" type="number" name="salary" onchange="changeSalary" value="{{salary}}" placeholder="月工资" focus="{{focusField == 'salary'}}"/>
           </view>
         </view>
       </view>
@@ -31,10 +31,10 @@
         <view class="weui-cells weui-cells_after-title">
           <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd" style="width:105px;">
-                <input class="weui-input" type="number" name="housingFundBase" value="{{hBase}}" placeholder="公积金基数"/>
+                <input class="weui-input" type="number" name="hBase" value="{{hBase}}" placeholder="公积金基数"/>
             </view>
             <view class="weui-cell__bd">
-              <input class="weui-input  second-input" type="number" name="housingFundBase" value="{{pHBase}}" placeholder="公积金比例"/>
+              <input class="weui-input  second-input" type="number" name="pHBase" value="{{pHBase}}" placeholder="公积金比例"/>
             </view>
             <view class="weui-cell__ft tips">
               <view>公积基数与比例</view>
@@ -42,10 +42,10 @@
           </view>
           <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd" style="width:105px;">
-              <input class="weui-input" name="insuranceBase" type="number" value="{{iBase}}" placeholder="保险基数"/>
+              <input class="weui-input" name="iBase" type="number" value="{{iBase}}" placeholder="保险基数"/>
             </view>
             <view class="weui-cell__bd">
-              <input class="weui-input second-input" type="number" name="housingFundBase" value="{{pHBase}}" placeholder="保险比例"/>
+              <input class="weui-input second-input" type="number" name="pIBase" value="{{pIBase}}" placeholder="保险比例"/>
             </view>
             <view class="weui-cell__ft tips">
               <view>保险基数与比例</view>

@@ -52,3 +52,7 @@ form{
   padding-left: 10px;
   margin-right: 10px;
 }
+
+.salary-error{
+  border: 1px solid #e66666;
+}

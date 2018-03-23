@@ -1,41 +1,28 @@
-@import "../../common/lib/weui.wxss";
-
-.plan-items {
-  margin: 20rpx;
+icon{
+    margin-right: 13px;
 }
-
-.plan-card {
-  background-color: #fff;
-  -webkit-box-shadow: 0 1rpx 2rpx 0 rgba(0,0,0,.2);
-  box-shadow: 0 1rpx 2rpx 0 rgba(0,0,0,.2);
-  margin-bottom: 1rem;
-  position: relative;
-  padding: 20rpx;
-  font-size: 12px;
+.page__bd {
+    padding-left: 40px;
+    padding-right: 40px;
+    text-align: left;
 }
-
-.plan-title {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1;
-  margin: 0 0 .5rem;
+.icon-box{
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
 }
-
-.plan-operation {
-  margin-top:10rpx;
+.icon-box__ctn{
+    flex-shrink: 100;
 }
-
-.plan-operation a {
-  padding:  10rpx 20rpx;
-  background: #1aad19;
-  color:  white;
-  border-radius:  5rpx;
-  margin-right: 10rpx;
-  font-size: 14px;
+.icon-box__title{
+    font-size: 16px;
 }
-
-.plan-operation a:hover {
-  background: white;
-  color:  #1aad19;
-  border: 1px solid #1aad19;
+.icon-box__desc{
+    margin-top: 6px;
+    font-size: 12px;
+    color: #888888;
+}
+.icon_sp_area {
+    margin-top: 10px;
+    text-align: left;
 }

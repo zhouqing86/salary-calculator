@@ -2,20 +2,51 @@
 <import src="../../common/foot.wxml" />
 
 <view class="container">
-  <template is="head" data="{{title: '拼拼车'}}"/>
+  <template is="head" data="{{title: '税后工资计算器'}}"/>
 
-  <view class="page-body">
-    <view wx:for="{{plans}}" wx:for-index="idx" wx:for-item="item" class="plan-items" wx:key="idx">
-      <view class="plan-card">
-        <view class="plan-title">{{item.from_address}} 至 {{item.to_address}}</view>
-        <view class="plan-title2">{{item.from_date}} 至 {{item.to_date}}  出发时间: {{item.time}}</view>
-        <view class="plan-days">可拼车时间：{{item.days}}</view>
-        <view class="plan-price">{{item.price_negotiable ? '见面沟通' : ''}} {{item.price_negotiable ? '' : '拼车费: '+item.price}}</view>
-        <view class="plan-operation" >
-          <a href="#">关注</a>
-          <a href="#">申请</a>
+  <view class="page__bd">
+    <view class="icon-box">
+        <icon type="success" size="30"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">税后月薪: {{afterTaxSalary.value}} ({{afterTaxSalary.percent}}%)</view>
+            <view class="icon-box__desc"></view>
         </view>
-      </view>
+    </view>
+    <view class="icon-box">
+        <icon type="success" size="30"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">住房公积金: {{houseFounding.value}} ({{houseFounding.percent}}%)</view>
+            <view class="icon-box__desc">缴纳基数: {{houseFounding.base}}，缴纳比例: ({{houseFounding.jpercent}}%) </view>
+        </view>
+    </view>
+    <view class="icon-box">
+        <icon type="success" size="30"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">养老保险金: {{insurance.value}} ({{insurance.percent}}%)</view>
+            <view class="icon-box__desc">缴纳基数: {{insurance.base}}，缴纳比例:({{insurance.jpercent}}%) </view>
+        </view>
+    </view>
+    <view class="icon-box">
+        <icon type="success" size="30"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">个人所得税: {{tax.value}} ({{tax.percent}}%)</view>
+            <view class="icon-box__desc"></view>
+        </view>
+    </view>
+    <view class="icon-box">
+        <icon type="success" size="30"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">医疗保险金: {{medicineInsurance.value}} ({{medicineInsurance.percent}}%)</view>
+            <view class="icon-box__desc">缴纳基数: {{medicineInsurance.base}}，缴纳比例:({{medicineInsurance.jpercent}}%) </view>
+        </view>
+    </view>
+
+    <view class="icon-box">
+        <icon type="success" size="30"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">失业保险金: {{jobInsurance.value}} ({{jobInsurance.percent}}%)</view>
+            <view class="icon-box__desc">缴纳基数: {{jobInsurance.base}}，缴纳比例:({{jobInsurance.jpercent}}%) </view>
+        </view>
     </view>
   </view>
   <template is="foot" />

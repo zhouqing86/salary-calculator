@@ -23,7 +23,9 @@ Page({
     hBase: hBase,
     iBase: iBase,
     pHBase: pHBase,
-    pIBase: pIBase
+    pIBase: pIBase,
+    salaryErrorClass: "",
+    focusField: "city",
   },
   //事件处理函数
   bindViewTap: function() {
@@ -114,8 +116,16 @@ Page({
   },
   formSubmit: function (e) {
     const formData = e.detail.value;
-    console.log(formData);
-    let url = '../srp/srp'
+    formData.config = this.data.config;
+
+    if (!formData.salary || parseInt(formData.salary) <= 0) {
+      this.setData({
+        salaryErrorClass: "salary-error"
+      });
+      return
+    }
+
+    let url = '../srp/srp?data=' + JSON.stringify(formData)
 
     wx.navigateTo({
       url: url

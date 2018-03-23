@@ -166,8 +166,8 @@ const CAPITAL_CITIES    =   [
         wholeName: "兰州市",
         id: 448,
         maxIBase: 14887,
-        maxHBase: 22440,
-        minIBase: 16752,
+        maxHBase: 16752,
+        minIBase: 2978,
         minHBase: 1620,
     },
     {
