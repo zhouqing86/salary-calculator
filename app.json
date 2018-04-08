@@ -2,12 +2,34 @@
   "pages":[
     "pages/index/index",
     "pages/srp/srp",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/bonus/bonus",
+    "pages/bonussrp/bonussrp"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/icon_component.png",
+        "selectedIconPath": "image/icon_component_HL.png",
+        "text": "工资"
+      },
+      {
+        "pagePath": "pages/bonus/bonus",
+        "iconPath": "image/icon_component.png",
+        "selectedIconPath": "image/icon_component_HL.png",
+        "text": "年终奖"
+      }
+    ]
   }
 }

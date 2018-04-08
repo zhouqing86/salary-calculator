@@ -1,0 +1,88 @@
+@import "../../common/lib/weui.wxss";
+
+.picker{
+  padding: 19rpx 26rpx;
+  background-color: #FFFFFF;
+}
+
+button {
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+.button-sp-area{
+  margin: 0 auto;
+  width: 60%;
+}
+.mini-btn{
+  margin-right: 10rpx;
+}
+
+.city-link {
+  display:inline-block;
+  width:100rpx;
+  font-size:11px;
+  margin-right:4rpx;
+  margin-top: 10rpx;
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+label {
+  display: inline-block;
+  min-width: 270rpx;
+  margin-right: 20rpx;
+}
+form{
+  width: 100%;
+}
+.picker-text {
+  margin-left: 20rpx;
+  position: relative;
+}
+
+.tips {
+  font-size: 10px;
+  color: #3cc51f;
+}
+
+.second-input {
+  border-left: 1px solid #E5E5E5;
+  border-right: 1px solid #E5E5E5;
+  padding-left: 10px;
+  margin-right: 10px;
+}
+
+.bonus-error{
+  border: 1px solid #e66666;
+}
+
+icon{
+    margin-right: 13px;
+}
+.page__bd {
+    padding-left: 40px;
+    padding-right: 40px;
+    text-align: left;
+}
+.icon-box{
+    margin-top: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+.icon-box__ctn{
+    flex-shrink: 100;
+}
+.icon-box__title{
+    font-size: 16px;
+}
+.icon-box__desc{
+    margin-top: 6px;
+    font-size: 12px;
+    color: #888888;
+}
+.icon_sp_area {
+    margin-top: 10px;
+    text-align: left;
+}

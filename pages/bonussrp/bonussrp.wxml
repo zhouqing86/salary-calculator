@@ -1,0 +1,17 @@
+<import src="../../common/head.wxml" />
+<import src="../../common/foot.wxml" />
+
+<view class="container">
+  <template is="head" data="{{title: '税后工资计算器'}}"/>
+
+  <view class="page__bd">
+    <view class="icon-box">
+        <icon type="success" size="30"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">交税额: {{tax}} ({{percent}}%)</view>
+            <view class="icon-box__desc">适应税率: {{taxRate}}, 速算扣除数: {{quickTax}}</view>
+        </view>
+    </view>
+  </view>
+  <template is="foot" />
+</view>
