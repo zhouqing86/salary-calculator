@@ -50,6 +50,59 @@ const toFixed = function(number) {
   return Math.floor(number* 100) / 100 ;
 }
 
+const newTaxMonthlyIncome = function(value, mode=0) {
+        if(isNaN(value)) return 0;
+        if(value<=0) return 0;
+
+        let taxes = [
+            [//工资
+                [5000, 8000, 17000, 30000, 40000, 60000, 85000, value],
+                [0,       0,    0,     0,     0,     0,     0,     0],
+                [5000, 5000, 5000,  5000,  5000,  5000,  5000,  5000],
+                [0,    0.03, 0.10,  0.20,  0.25,  0.30,  0.35,  0.45],
+                [0,       0,  210,   1410,  2660,  4410,  7160, 15160]
+            ],
+            [//劳务
+                [800, 4000, 20000, 50000, value],
+                [  0, 0,      0.2,   0.2,   0.2],
+                [  0, 800,      0,     0,     0],
+                [  0, 0.2,    0.2,   0.3,   0.4],
+                [  0, 0,        0,  2000,  7000]
+            ]
+        ];
+//[0, 0, 3000*0.07, 3000*0.17+9000*0.1, 3000*0.22+9000*0.15+13000*0.05, 3000*0.27+9000*0.20+13000*0.10+10000*0.05,3000*0.32+9000*0.25+13000*0.15+10000*0.10+20000*0.05,3000*0.42+9000*0.35+13000*0.25+10000*0.20+20000*0.15+25000*0.1]
+        let levels = taxes[mode];
+        let index = levels[0].findIndex((v) => {return v>=value;});
+
+        let result = Number.parseFloat(value - (value * (1 - levels[1][index]) - levels[2][index]) * levels[3][index] + levels[4][index]).toFixed(2);
+        return result;
+}
+
+
+const newSalary = function(data) {
+  const config = data.config;
+  const salary = data.salary;
+  const insurance = parseFloat(data.iBase) * parseFloat(data.pIBase) / 100;
+  const houseFounding = parseFloat(data.hBase) * parseFloat(data.pHBase) / 100;
+  const medicineInsurance = parseFloat(config.pMBase) * parseFloat(data.iBase) / 100;
+  const jobInsurance = parseFloat(config.pJBase) * parseFloat(data.iBase) / 100;
+  const monthIncome = newTaxMonthlyIncome(salary);
+  const monthPureIncome = monthIncome - insurance - houseFounding - medicineInsurance - jobInsurance;
+
+  const monthTheoryIcome = newTaxMonthlyIncome(salary - insurance - houseFounding - medicineInsurance - jobInsurance);
+
+  return {
+    monthSalary: {
+      value: toFixed(monthPureIncome),
+      percent: toFixed(monthPureIncome / salary * 100)
+    },
+    monthTheoryIcome: {
+      value: toFixed(monthTheoryIcome),
+      percent: toFixed(monthTheoryIcome / salary * 100)
+    }
+  }
+}
+
 const calSalary = function(data) {
   const config = data.config;
   const salary = data.salary;
@@ -62,6 +115,7 @@ const calSalary = function(data) {
   const tax = afterInsuranceSalary - afterTaxSalary;
 
   return {
+    newSalary: newSalary(data),
     insurance: {
       base: data.iBase,
       jpercent: data.pIBase,

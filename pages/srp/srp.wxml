@@ -3,7 +3,34 @@
 
 <view class="container">
   <template is="head" data="{{title: '税后工资计算器'}}"/>
-
+  <view class="page-section">
+    <view class="page-sub-section">
+      2018年个税调整后(不考虑年终奖)
+    </view>
+    <view class="page-section-line"></view>
+  </view>
+  <view class="page__bd">
+    <view class="icon-box">
+        <icon type="success" size="30"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">每月到手: {{newSalary.monthSalary.value}} ({{newSalary.monthSalary.percent}}%)</view>
+            <view class="icon-box__desc"></view>
+        </view>
+    </view>
+    <view class="icon-box">
+        <icon type="success" size="30"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">按年平均应月入: {{newSalary.monthTheoryIcome.value}} ({{newSalary.monthTheoryIcome.percent}}%)</view>
+            <view class="icon-box__desc"></view>
+        </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <view class="page-sub-section">
+      2018年个税调整前
+    </view>
+    <view class="page-section-line"></view>
+  </view>
   <view class="page__bd">
     <view class="icon-box">
         <icon type="success" size="30"></icon>

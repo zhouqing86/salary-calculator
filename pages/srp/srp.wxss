@@ -26,3 +26,17 @@ icon{
     margin-top: 10px;
     text-align: left;
 }
+
+.page-section {
+    margin-bottom: 10px;
+}
+
+.page-sub-section {
+    margin-left: 10px;
+}
+
+.page-section-line {
+  margin:0 0;
+  height:2rpx;
+  background-color:#1aad19;
+}
