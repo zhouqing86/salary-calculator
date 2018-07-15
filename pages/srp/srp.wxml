@@ -5,7 +5,7 @@
   <template is="head" data="{{title: '税后工资计算器'}}"/>
   <view class="page-section">
     <view class="page-sub-section">
-      2018年个税调整后(不考虑年终奖)
+      2018年个税调整后(只是预估)
     </view>
     <view class="page-section-line"></view>
   </view>

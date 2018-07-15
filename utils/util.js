@@ -85,7 +85,7 @@ const newSalary = function(data) {
   const insurance = parseFloat(data.iBase) * parseFloat(data.pIBase) / 100;
   const houseFounding = parseFloat(data.hBase) * parseFloat(data.pHBase) / 100;
   const medicineInsurance = parseFloat(config.pMBase) * parseFloat(data.iBase) / 100;
-  const jobInsurance = parseFloat(config.pJBase) * parseFloat(data.iBase) / 100;
+  const jobInsurance = parseFloat(config.pJBase) * parseFloat(config.minIBase) / 100;
   const monthIncome = newTaxMonthlyIncome(salary);
   const monthPureIncome = monthIncome - insurance - houseFounding - medicineInsurance - jobInsurance;
 
@@ -109,10 +109,12 @@ const calSalary = function(data) {
   const insurance = parseFloat(data.iBase) * parseFloat(data.pIBase) / 100;
   const houseFounding = parseFloat(data.hBase) * parseFloat(data.pHBase) / 100;
   const medicineInsurance = parseFloat(config.pMBase) * parseFloat(data.iBase) / 100;
-  const jobInsurance = parseFloat(config.pJBase) * parseFloat(data.iBase) / 100;
+  const jobInsurance = parseFloat(config.pJBase) * parseFloat(config.minIBase) / 100;
   const afterInsuranceSalary = data.salary - insurance - houseFounding - medicineInsurance - jobInsurance;
   const afterTaxSalary = toPureIncome(afterInsuranceSalary, 0);
   const tax = afterInsuranceSalary - afterTaxSalary;
+
+  // console.log("data:", data);
 
   return {
     newSalary: newSalary(data),
@@ -129,13 +131,13 @@ const calSalary = function(data) {
       percent: toFixed(houseFounding / salary * 100)
     },
     medicineInsurance: {
-      base: config.pMBase,
+      base: data.iBase,
       jpercent: data.pHBase,
       value: toFixed(medicineInsurance),
       percent: toFixed(medicineInsurance / salary * 100)
     },
     jobInsurance: {
-      base: data.iBase,
+      base: config.minIBase,
       jpercent: config.pJBase,
       value: toFixed(jobInsurance),
       percent: toFixed(jobInsurance / salary * 100)

@@ -9,6 +9,8 @@ Page({
   },
   onLoad: function (options) {
     const data = JSON.parse(options.data);
-    this.setData(utils.calSalary(data))
+    const salaryResult = utils.calSalary(data);
+    console.log(salaryResult);
+    this.setData(salaryResult);
   }
 })
