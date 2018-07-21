@@ -63,7 +63,7 @@ const newTaxMonthlyIncome = function(value, mode=0) {
                 [0,       0,  210,   1410,  2660,  4410,  7160, 15160]
             ],
             [//劳务
-                [800, 4000, 20000, 50000, value],
+                [1667, 4167, 20000, 50000, value],
                 [  0, 0,      0.2,   0.2,   0.2],
                 [  0, 800,      0,     0,     0],
                 [  0, 0.2,    0.2,   0.3,   0.4],
@@ -86,19 +86,18 @@ const newSalary = function(data) {
   const houseFounding = parseFloat(data.hBase) * parseFloat(data.pHBase) / 100;
   const medicineInsurance = parseFloat(config.pMBase) * parseFloat(data.iBase) / 100;
   const jobInsurance = parseFloat(config.pJBase) * parseFloat(config.minIBase) / 100;
-  const monthIncome = newTaxMonthlyIncome(salary);
-  const monthPureIncome = monthIncome - insurance - houseFounding - medicineInsurance - jobInsurance;
 
-  const monthTheoryIcome = newTaxMonthlyIncome(salary - insurance - houseFounding - medicineInsurance - jobInsurance);
+  const monthTheoryIncome = newTaxMonthlyIncome(salary - insurance - houseFounding - medicineInsurance - jobInsurance);
+  const tax = salary - insurance - houseFounding - medicineInsurance - jobInsurance - monthTheoryIncome;
 
   return {
-    monthSalary: {
-      value: toFixed(monthPureIncome),
-      percent: toFixed(monthPureIncome / salary * 100)
+    monthTheoryIncome: {
+      value: toFixed(monthTheoryIncome),
+      percent: toFixed(monthTheoryIncome / salary * 100)
     },
-    monthTheoryIcome: {
-      value: toFixed(monthTheoryIcome),
-      percent: toFixed(monthTheoryIcome / salary * 100)
+    tax: {
+      value: toFixed(tax),
+      percent: toFixed(tax/salary * 100)
     }
   }
 }
@@ -116,8 +115,10 @@ const calSalary = function(data) {
 
   // console.log("data:", data);
 
+  const newSalaryData = newSalary(data);
+
   return {
-    newSalary: newSalary(data),
+    newSalary: newSalaryData,
     insurance: {
       base: data.iBase,
       jpercent: data.pIBase,
@@ -149,6 +150,10 @@ const calSalary = function(data) {
     afterTaxSalary: {
       value: toFixed(afterTaxSalary),
       percent: toFixed(afterTaxSalary / salary * 100)
+    },
+    oldCompareNew: {
+      salary: toFixed(newSalaryData.monthTheoryIncome.value - afterTaxSalary),
+      savedTax: toFixed(tax - newSalaryData.tax.value)
     }
   }
 }

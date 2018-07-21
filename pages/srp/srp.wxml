@@ -2,10 +2,9 @@
 <import src="../../common/foot.wxml" />
 
 <view class="container">
-  <template is="head" data="{{title: '税后工资计算器'}}"/>
   <view class="page-section">
     <view class="page-sub-section">
-      2018年个税调整后(只是预估)
+      2018年个税调整过渡期(10.1-12.31)
     </view>
     <view class="page-section-line"></view>
   </view>
@@ -13,15 +12,15 @@
     <view class="icon-box">
         <icon type="success" size="30"></icon>
         <view class="icon-box__ctn">
-            <view class="icon-box__title">每月到手: {{newSalary.monthSalary.value}} ({{newSalary.monthSalary.percent}}%)</view>
-            <view class="icon-box__desc"></view>
+            <view class="icon-box__title">税后月薪: {{newSalary.monthTheoryIncome.value}} ({{newSalary.monthTheoryIncome.percent}}%)</view>
+            <view class="icon-box__desc">每月到手 + {{oldCompareNew.salary}}</view>
         </view>
     </view>
     <view class="icon-box">
         <icon type="success" size="30"></icon>
         <view class="icon-box__ctn">
-            <view class="icon-box__title">按年平均应月入: {{newSalary.monthTheoryIcome.value}} ({{newSalary.monthTheoryIcome.percent}}%)</view>
-            <view class="icon-box__desc"></view>
+            <view class="icon-box__title">个人所得税: {{ newSalary.tax.value }} ({{newSalary.tax.percent}}%)</view>
+            <view class="icon-box__desc">每月交税 - {{ oldCompareNew.savedTax }}</view>
         </view>
     </view>
   </view>
