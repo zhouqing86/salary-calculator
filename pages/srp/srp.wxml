@@ -4,7 +4,7 @@
 <view class="container">
   <view class="page-section">
     <view class="page-sub-section">
-      2018年个税调整过渡期(10.1-12.31)
+      <navigator url="/pages/policy/policy">2018年个税调整过渡期(10.1-12.31)</navigator>
     </view>
     <view class="page-section-line"></view>
   </view>

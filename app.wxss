@@ -34,7 +34,7 @@ form{
   font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
 }
 .page-head{
-  padding: 30rpx 20rpx 70rpx;
+  padding: 30rpx 20rpx 30rpx;
   text-align: center;
 }
 .page-head-title{
@@ -48,6 +48,11 @@ form{
   width:350rpx;
   height: 2rpx;
   background-color: #1aad19;
+}
+.page-link {
+  color: blue;
+  text-decoration: underline;
+  font-size: 20rpx;
 }
 .page-head-desc{
   padding-top: 20rpx;

@@ -1,7 +1,12 @@
 <template name="head">
   <view class="page-head">
-    <view class="page-head-title">{{title}}</view>
+    <view class="page-head-title">
+      <navigator url="/pages/index/index">{{title}}</navigator>
+    </view>
     <view class="page-head-line"></view>
+    <view class="page-link" wx:if="{{displayLink}}">
+        <navigator url="/pages/policy/policy">2018个税修正案(草案)</navigator>
+    </view>
     <view wx:if="{{desc}}" class="page-head-desc">{{desc}}</view>
   </view>
 </template>

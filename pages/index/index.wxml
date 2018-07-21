@@ -2,7 +2,7 @@
 <import src="../../common/foot.wxml" />
 
 <view class="container">
-  <template is="head" data="{{title: '税后工资计算器'}}"/>
+  <template is="head" data="{{title: '税后工资计算器', displayLink: true}}"/>
 
   <view class="page-body">
     <form catchsubmit="formSubmit" catchreset="formReset">

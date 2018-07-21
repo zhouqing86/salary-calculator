@@ -28,8 +28,7 @@ icon{
 }
 
 .page-section {
-    margin-bottom: 20rpx;
-    margin-top: 20rpx;
+    margin-bottom: 10px;
 }
 
 .page-sub-section {
@@ -40,4 +39,11 @@ icon{
   margin:0 0;
   height:2rpx;
   background-color:#1aad19;
+}
+
+.line {
+  width: 100%;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  border-top:1px #989898 solid;
 }

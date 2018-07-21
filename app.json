@@ -4,7 +4,8 @@
     "pages/srp/srp",
     "pages/logs/logs",
     "pages/bonus/bonus",
-    "pages/bonussrp/bonussrp"
+    "pages/bonussrp/bonussrp",
+    "pages/policy/policy"
   ],
   "window":{
     "backgroundTextStyle":"light",
