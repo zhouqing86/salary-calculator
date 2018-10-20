@@ -87,7 +87,17 @@ const newSalary = function(data) {
   const medicineInsurance = parseFloat(config.pMBase) * parseFloat(data.iBase) / 100;
   const jobInsurance = parseFloat(config.pJBase) * parseFloat(config.minIBase) / 100;
 
-  const monthTheoryIncome = newTaxMonthlyIncome(salary - insurance - houseFounding - medicineInsurance - jobInsurance);
+  const deduct = calDeduct(data);
+
+
+  //添加入扣除部分后计算
+  let monthTheoryIncome = newTaxMonthlyIncome(salary - insurance - houseFounding - medicineInsurance - jobInsurance - deduct.total);
+  monthTheoryIncome = toFixed(monthTheoryIncome) + deduct.total;
+
+  //没有扣除部分的收入
+  let monthTheoryIncomeWithoutDeduct = newTaxMonthlyIncome(salary - insurance - houseFounding - medicineInsurance - jobInsurance);
+  let incomeFromDeduct = monthTheoryIncome - monthTheoryIncomeWithoutDeduct;
+
   const tax = salary - insurance - houseFounding - medicineInsurance - jobInsurance - monthTheoryIncome;
 
   return {
@@ -98,8 +108,64 @@ const newSalary = function(data) {
     tax: {
       value: toFixed(tax),
       percent: toFixed(tax/salary * 100)
+    },
+    deduct: deduct,
+    incomeFromDeduct: {
+      value: toFixed(incomeFromDeduct),
+      percent: toFixed(incomeFromDeduct / salary * 100)
+    },
+    insurance: {
+      base: data.iBase,
+      jpercent: data.pIBase,
+      value: toFixed(insurance),
+      percent: toFixed(insurance / salary * 100)
+    },
+    houseFounding: {
+      base: data.hBase,
+      jpercent: data.pHBase,
+      value: toFixed(houseFounding),
+      percent: toFixed(houseFounding / salary * 100)
+    },
+    medicineInsurance: {
+      base: data.iBase,
+      jpercent: data.pHBase,
+      value: toFixed(medicineInsurance),
+      percent: toFixed(medicineInsurance / salary * 100)
+    },
+    jobInsurance: {
+      base: config.minIBase,
+      jpercent: config.pJBase,
+      value: toFixed(jobInsurance),
+      percent: toFixed(jobInsurance / salary * 100)
+    },
+  }
+}
+
+const calDeduct = function(data) {
+  let houseLoanDeduct = 0;
+  let rentDeduct = 0;
+  let childEducationDeduct = parseFloat(data.childEducationDeduct);
+  let parentDutyDeduct = parseFloat(data.parentDutyDeduct);
+
+  if (data.houseLoan) {
+    houseLoanDeduct = 1000;
+  }
+
+  if (data.isRent) {
+    rentDeduct = 1200;
+  }
+
+  const ret = {
+    total: houseLoanDeduct + childEducationDeduct + parentDutyDeduct + rentDeduct,
+    details: {
+      houseLoanDeduct,
+      childEducationDeduct,
+      parentDutyDeduct,
+      rentDeduct
     }
   }
+
+  return ret;
 }
 
 const calSalary = function(data) {
@@ -112,8 +178,6 @@ const calSalary = function(data) {
   const afterInsuranceSalary = data.salary - insurance - houseFounding - medicineInsurance - jobInsurance;
   const afterTaxSalary = toPureIncome(afterInsuranceSalary, 0);
   const tax = afterInsuranceSalary - afterTaxSalary;
-
-  // console.log("data:", data);
 
   const newSalaryData = newSalary(data);
 
@@ -162,4 +226,5 @@ module.exports = {
   formatTime: formatTime,
   clone: clone,
   calSalary: calSalary,
+  toFixed: toFixed
 }

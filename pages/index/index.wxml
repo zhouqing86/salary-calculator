@@ -54,6 +54,59 @@
         </view>
       </view>
 
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd" style="width:105px;">
+              <picker bindchange="changeChildNumber" value="{{childNumber}}" range="{{[0,1,2,3,4,5,6]}}">
+                <view class="weui-input">{{childNumber}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input second-input" type="number" name="childEducationDeduct" value="{{childEducationDeduct}}" placeholder="扣除教育费用"/>
+            </view>
+            <view class="weui-cell__ft tips">
+              <view>子女数及扣除数</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd" style="width:105px;">
+              <picker bindchange="changeBrotherSisterNumber" value="{{brotherSisterNumber}}" range="{{[0,1,2,3,4,5,6]}}">
+                <view class="weui-input">{{brotherSisterNumber}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input second-input" type="number" name="parentDutyDeduct" value="{{parentDutyDeduct}}" placeholder="扣除赡养费用"/>
+            </view>
+            <view class="weui-cell__ft tips">
+              <view>兄弟姐妹数及扣除数</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_switch">
+            <view class="weui-cell__bd">首套房有贷款</view>
+            <view class="weui-cell__ft">
+              <switch checked="{{houseLoan}}" bindchange="houseLoanChange"/>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_switch">
+            <view class="weui-cell__bd">目前居住城市租房</view>
+            <view class="weui-cell__ft">
+              <switch checked="{{isRent}}" bindchange="rentStatusChange"/>
+            </view>
+          </view>
+        </view>
+      </view>
+
       <view class="btn-area" id="buttonContainer">
         <button type="primary" formType="submit">计算</button>
         <button formType="reset">重置</button>

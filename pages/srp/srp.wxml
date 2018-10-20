@@ -4,7 +4,7 @@
 <view class="container">
   <view class="page-section">
     <view class="page-sub-section">
-      <navigator url="/pages/policy/policy">2018年个税调整过渡期(10.1-12.31)</navigator>
+      <navigator url="/pages/policy/policy">2019年个税草案计算</navigator>
     </view>
     <view class="page-section-line"></view>
   </view>
@@ -23,10 +23,48 @@
             <view class="icon-box__desc">每月交税 - {{ oldCompareNew.savedTax }}</view>
         </view>
     </view>
+
+    <view class="icon-box">
+        <icon type="success" size="30"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">扣除总数: {{ newSalary.deduct.total }}</view>
+            <view class="icon-box__desc">扣除总数每月增加收入：{{newSalary.incomeFromDeduct.value}} ({{newSalary.incomeFromDeduct.percent}}%)</view>
+        </view>
+    </view>
+
+    <view class="icon-box">
+        <icon type="success" size="30"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">住房公积金: {{newSalary.houseFounding.value}} ({{newSalary.houseFounding.percent}}%)</view>
+            <view class="icon-box__desc">缴纳基数: {{newSalary.houseFounding.base}}，缴纳比例: ({{newSalary.houseFounding.jpercent}}%) </view>
+        </view>
+    </view>
+    <view class="icon-box">
+        <icon type="success" size="30"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">养老保险金: {{newSalary.insurance.value}} ({{newSalary.insurance.percent}}%)</view>
+            <view class="icon-box__desc">缴纳基数: {{newSalary.insurance.base}}，缴纳比例:({{newSalary.insurance.jpercent}}%) </view>
+        </view>
+    </view>
+    <view class="icon-box">
+        <icon type="success" size="30"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">医疗保险金: {{newSalary.medicineInsurance.value}} ({{newSalary.medicineInsurance.percent}}%)</view>
+            <view class="icon-box__desc">缴纳基数: {{newSalary.medicineInsurance.base}}，缴纳比例:({{newSalary.medicineInsurance.jpercent}}%) </view>
+        </view>
+    </view>
+
+    <view class="icon-box">
+        <icon type="success" size="30"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">失业保险金: {{newSalary.jobInsurance.value}} ({{newSalary.jobInsurance.percent}}%)</view>
+            <view class="icon-box__desc">缴纳基数: {{newSalary.jobInsurance.base}}，缴纳比例:({{newSalary.jobInsurance.jpercent}}%) </view>
+        </view>
+    </view>
   </view>
   <view class="page-section">
     <view class="page-sub-section">
-      2018年个税调整前
+      2018年9月个税调整前
     </view>
     <view class="page-section-line"></view>
   </view>

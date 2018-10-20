@@ -28,6 +28,12 @@ Page({
     salaryErrorClass: "",
     hiddenCityClass: "hidden-city-list",
     focusField: "city",
+    childNumber: 0,
+    childEducationDeduct: 0,
+    brotherSisterNumber: 0,
+    parentDutyDeduct: 0,
+    houseLoan: true,
+    isRent: false
   },
   //事件处理函数
   bindViewTap: function() {
@@ -97,6 +103,39 @@ Page({
       hiddenCityClass: "hidden-city-list"
     });
   },
+  changeChildNumber: function(event) {
+    if (event.detail.value != undefined) {
+      let childNumber = parseInt(event.detail.value);
+      this.setData({
+        childEducationDeduct: childNumber * 1000,
+        childNumber: childNumber
+      });
+    }
+  },
+  changeBrotherSisterNumber: function(event) {
+    if (event.detail.value != undefined && event.detail.value != 0) {
+      let brotherSisterNumber = parseInt(event.detail.value);
+      this.setData({
+        parentDutyDeduct: utils.toFixed(2000/brotherSisterNumber),
+        brotherSisterNumber: brotherSisterNumber
+      });
+    } else if (event.detail.value == 0) {
+      this.setData({
+        parentDutyDeduct: 0,
+        brotherSisterNumber: 0
+      });
+    }
+  },
+  houseLoanChange: function(event) {
+    this.setData({
+      houseLoan: !(this.data.houseLoan)
+    });
+  },
+  rentStatusChange: function(event) {
+    this.setData({
+      isRent: !(this.data.isRent)
+    });
+  },
   changeStateBySalary: function(salary, config) {
     if (salary < config.minHBase) {
       this.setData({hBase: config.minHBase})
@@ -116,6 +155,8 @@ Page({
   formSubmit: function (e) {
     const formData = e.detail.value;
     formData.config = this.data.config;
+    formData.houseLoan = this.data.houseLoan;
+    formData.isRent = this.data.isRent;
 
     if (!formData.salary || parseInt(formData.salary) <= 0) {
       this.setData({
@@ -132,7 +173,16 @@ Page({
   },
   formReset: function (e) {
     this.setData({
-      config: defaultConfig
+      config: defaultConfig,
+      salaryErrorClass: "",
+      hiddenCityClass: "hidden-city-list",
+      focusField: "city",
+      childNumber: 0,
+      childEducationDeduct: 0,
+      brotherSisterNumber: 0,
+      parentDutyDeduct: 0,
+      houseLoan: true,
+      isRent: false
     })
   }
 })
