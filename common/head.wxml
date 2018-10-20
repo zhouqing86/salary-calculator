@@ -5,7 +5,8 @@
     </view>
     <view class="page-head-line"></view>
     <view class="page-link" wx:if="{{displayLink}}">
-        <navigator url="/pages/policy/policy">2018个税修正案(草案)</navigator>
+        <navigator url="/pages/policy/policy">个税修正案(草案)</navigator>
+        <navigator url="/pages/deductpolicy/deductpolicy">个税抵扣细则意见稿</navigator>
     </view>
     <view wx:if="{{desc}}" class="page-head-desc">{{desc}}</view>
   </view>

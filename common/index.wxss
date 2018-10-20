@@ -19,6 +19,10 @@
   font-size: 28rpx;
 }
 
+navigator {
+  display: inline-block;
+}
+
 .navigator-box {
   opacity: 0;
   position: relative;

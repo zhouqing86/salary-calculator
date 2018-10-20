@@ -1,0 +1,49 @@
+icon{
+    margin-right: 13px;
+}
+.page__bd {
+    padding-left: 40px;
+    padding-right: 40px;
+    text-align: left;
+}
+.icon-box{
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+.icon-box__ctn{
+    flex-shrink: 100;
+}
+.icon-box__title{
+    font-size: 16px;
+}
+.icon-box__desc{
+    margin-top: 6px;
+    font-size: 12px;
+    color: #888888;
+}
+.icon_sp_area {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.page-section {
+    margin-bottom: 10px;
+}
+
+.page-sub-section {
+    margin-left: 10px;
+}
+
+.page-section-line {
+  margin:0 0;
+  height:2rpx;
+  background-color:#1aad19;
+}
+
+.line {
+  width: 100%;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  border-top:1px #989898 solid;
+}

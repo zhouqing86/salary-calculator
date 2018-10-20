@@ -56,3 +56,7 @@ form{
 .salary-error{
   border: 1px solid #e66666;
 }
+
+.hidden-city-list {
+  display: none;
+}

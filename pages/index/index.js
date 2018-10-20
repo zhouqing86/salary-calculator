@@ -26,6 +26,7 @@ Page({
     pHBase: pHBase,
     pIBase: pIBase,
     salaryErrorClass: "",
+    hiddenCityClass: "hidden-city-list",
     focusField: "city",
   },
   //事件处理函数
@@ -62,6 +63,9 @@ Page({
   changeCity: function(event) {
     const id = event.currentTarget.dataset.cityId;
     this.changeCityById(id);
+    this.setData({
+      hiddenCityClass: "hidden-city-list"
+    });
   },
   changeCityById: function(id) {
     var cityConfig = defaultConfig;
@@ -79,10 +83,19 @@ Page({
   changeSalary: function(event) {
     const salary = event.detail.value;
     if(salary) {
-      this.setData({salary: salary})
+      this.setData({salary: salary});
       this.changeStateBySalary(salary, this.data.config);
     }
-
+  },
+  displayCityList: function(event) {
+    this.setData({
+      hiddenCityClass: ""
+    });
+  },
+  hiddenCityList: function(event) {
+    this.setData({
+      hiddenCityClass: "hidden-city-list"
+    });
   },
   changeStateBySalary: function(salary, config) {
     if (salary < config.minHBase) {

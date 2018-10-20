@@ -9,10 +9,10 @@
       <view class="page-section">
         <view class="weui-cells weui-cells_after-title">
           <view class="weui-cell weui-cell_input">
-            <input class="weui-input" name="city" value="{{config.wholeName}}" placeholder="选择城市"/>
+            <input class="weui-input" name="city" value="{{config.wholeName}}" onfocus="displayCityList" onblur="hiddenCityList" placeholder="选择城市"/>
           </view>
         </view>
-        <view class="primary-cities">
+        <view class="primary-cities {{hiddenCityClass}}">
           <block wx:for="{{cities}}" wx:key="{{index}}" wx:for-item="item">
             <button class="city-link" data-city-id="{{item.id}}" bindtap="changeCity">{{item.name}}</button>
           </block>

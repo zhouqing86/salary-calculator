@@ -5,7 +5,8 @@
     "pages/logs/logs",
     "pages/bonus/bonus",
     "pages/bonussrp/bonussrp",
-    "pages/policy/policy"
+    "pages/policy/policy",
+    "pages/deductpolicy/deductpolicy"
   ],
   "window":{
     "backgroundTextStyle":"light",
